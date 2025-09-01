@@ -49,7 +49,6 @@ function FormPage() {
     setError(null);
 
     try {
-      // TODO: Replace with actual API endpoint
       const response = await fetch("/api/predict", {
         method: "POST",
         headers: {
