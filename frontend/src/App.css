@@ -1,0 +1,14 @@
+/* Custom styles for Hepatitis C Prediction App */
+/* Most styling is handled by Tailwind CSS */
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom focus styles if needed */
+.custom-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
