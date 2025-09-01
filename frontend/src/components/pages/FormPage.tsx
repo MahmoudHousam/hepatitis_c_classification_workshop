@@ -55,7 +55,7 @@ function FormPage() {
       <div className="max-w-6xl mx-auto mb-8">
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold text-center text-gray-800 flex-1">
-            Hepatitis C Virus Prediction
+            {/* Hepatitis C Virus Prediction */}
           </h1>
           <Link
             to="/"
