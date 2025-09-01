@@ -127,9 +127,6 @@ function FormPage() {
                 id="albumin"
                 value={formData.albumin}
                 onChange={(e) => handleInputChange("albumin", e.target.value)}
-                min="35"
-                max="50"
-                step="0.1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 35-50 g/L"
                 required
@@ -151,9 +148,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("alkalinePhosphatase", e.target.value)
                 }
-                min="44"
-                max="147"
-                step="1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 44-147 IU/L"
                 required
@@ -175,9 +169,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("alanineTransaminase", e.target.value)
                 }
-                min="7"
-                max="56"
-                step="1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 7-56 U/L"
                 required
@@ -199,9 +190,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("aspartateTransaminase", e.target.value)
                 }
-                min="10"
-                max="40"
-                step="1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 10-40 U/L"
                 required
@@ -221,9 +209,6 @@ function FormPage() {
                 id="bilirubin"
                 value={formData.bilirubin}
                 onChange={(e) => handleInputChange("bilirubin", e.target.value)}
-                min="5"
-                max="21"
-                step="0.1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 5-21 µmol/L"
                 required
@@ -245,9 +230,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("cholinesterase", e.target.value)
                 }
-                min="5.3"
-                max="12.9"
-                step="0.1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 5.3-12.9 kU/L"
                 required
@@ -269,9 +251,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("cholesterol", e.target.value)
                 }
-                min="3.0"
-                max="5.5"
-                step="0.1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 3.0-5.5 mmol/L"
                 required
@@ -293,9 +272,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("creatinine", e.target.value)
                 }
-                min="60"
-                max="110"
-                step="1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 60-110 µmol/L"
                 required
@@ -317,9 +293,6 @@ function FormPage() {
                 onChange={(e) =>
                   handleInputChange("gammaGlutamylTransferase", e.target.value)
                 }
-                min="9"
-                max="48"
-                step="1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 9-48 U/L"
                 required
@@ -339,9 +312,6 @@ function FormPage() {
                 id="protein"
                 value={formData.protein}
                 onChange={(e) => handleInputChange("protein", e.target.value)}
-                min="60"
-                max="80"
-                step="0.1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 placeholder="Range: 60-80 g/L"
                 required
