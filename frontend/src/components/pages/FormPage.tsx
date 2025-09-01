@@ -33,6 +33,8 @@ function FormPage() {
   });
 
   const [predictionResult, setPredictionResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({
@@ -41,25 +43,45 @@ function FormPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement prediction logic here
-    setPredictionResult(
-      "Prediction result will appear here after form submission."
-    );
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // TODO: Replace with actual API endpoint
+      const response = await fetch("/api/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Prediction failed");
+      }
+
+      const result = await response.json();
+      setPredictionResult(
+        result.prediction || "Prediction completed successfully"
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+      setPredictionResult("");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      {/* Header */}
       <div className="max-w-6xl mx-auto mb-8">
         <div className="flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-center text-gray-800 flex-1">
-            {/* Hepatitis C Virus Prediction */}
-          </h1>
+          <h1 className="text-4xl font-bold text-center text-gray-800 flex-1"></h1>
           <Link
             to="/"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-200"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 disabled:transform-none"
           >
             Model Info
           </Link>
@@ -72,6 +94,13 @@ function FormPage() {
           onSubmit={handleSubmit}
           className="bg-white rounded-2xl shadow-xl p-8 mb-8"
         >
+          {/* Error Display */}
+          {error && (
+            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded-r-lg">
+              <p className="text-red-700">{error}</p>
+            </div>
+          )}
+
           {/* Patient Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
@@ -323,9 +352,10 @@ function FormPage() {
           <div className="mt-8 text-center">
             <button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105"
+              disabled={isSubmitting}
+              className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 disabled:transform-none"
             >
-              Predict Hepatitis C Risk
+              {isSubmitting ? "Processing..." : "Predict Hepatitis C Risk"}
             </button>
           </div>
         </form>
