@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { getApiUrl, API_CONFIG } from "../../config/api";
 
 interface FormData {
   mrn: string;
@@ -49,7 +50,7 @@ function FormPage() {
     setError(null);
 
     try {
-      const response = await fetch("/api/predict", {
+      const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.PREDICT), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +64,9 @@ function FormPage() {
 
       const result = await response.json();
       setPredictionResult(
-        result.prediction || "Prediction completed successfully"
+        result.message ||
+          result.prediction ||
+          "Prediction completed successfully"
       );
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
