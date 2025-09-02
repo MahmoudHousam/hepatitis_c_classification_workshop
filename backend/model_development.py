@@ -23,7 +23,7 @@ def build_hepatitis_model(data):
                         "3=Cirrhosis" : 1
                 }
         )
-
+        
         data["Gender"] = data["Sex"].map({"m": 1, "f": 0})
 
         # drop Sex column
@@ -63,20 +63,20 @@ def build_hepatitis_model(data):
         feature_scores_data_set = feature_scores_data_set.sort_values(by="Scores", ascending=False)
 
         # Drop less important features based on feature scores
-        X = X.drop(["ALP (IU/L)"], axis = 1)  
+        X = X.drop(["ALP (IU/L)", "MRN"], axis = 1)  
 
         #Splitting the data into the training and testing set  
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42) 
-        lr_model = LogisticRegression()
-        lr_model.fit(X_train, y_train)
-        y_pred_lr = lr_model.predict(X_test)
-        accr = accuracy_score(y_test, y_pred_lr)
-        print(f"Logistic Regression Accuracy: {accr*100:.2f}%")
-        classification_model_report = classification_report(y_test, y_pred_lr)
-        print("Classification Report:\n", classification_model_report)
+        from sklearn.ensemble import RandomForestClassifier
+        rnf_model = RandomForestClassifier(random_state=42)
+        rnf_model.fit(X_train, y_train)
+        y_pred_rnf = rnf_model.predict(X_test)
+        accr = accuracy_score(y_test, y_pred_rnf)
+        print(f"Random Forest Accuracy: {accr*100:.2f}%")
+        print(classification_report(y_test, y_pred_rnf))
 
         # Save the trained model
-        joblib.dump(lr_model, "hepatitis_model.pkl")
+        joblib.dump(rnf_model, "hepatitis_model.pkl")
 
         # Save the feature scores
         feature_scores_data_set.to_csv("feature_scores.csv", index=False)
