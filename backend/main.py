@@ -52,6 +52,7 @@ async def predict(request: dict):
         }
         
     except Exception as e:
+
         return {
             "error": "Prediction failed",
             "message": str(e),
