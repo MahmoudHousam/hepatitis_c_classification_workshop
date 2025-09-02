@@ -76,7 +76,7 @@ def build_hepatitis_model(data):
         print("Classification Report:\n", classification_model_report)
 
         # Save the trained model
-        joblib.dump(y_pred_lr, "hepatitis_model.pkl")
+        joblib.dump(lr_model, "hepatitis_model.pkl")
 
         # Save the feature scores
         feature_scores_data_set.to_csv("feature_scores.csv", index=False)
