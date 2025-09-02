@@ -11,7 +11,7 @@ function ModelInfo() {
           </h1>
           <Link
             to="/prediction_form"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-200"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 disabled:transform-none"
           >
             Predict HCV
           </Link>
