@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+scikit-learn
+joblib
+sqlalchemy
+psycopg2-binary
+pydantic
+python-multipart
+requests
+python-dotenv
