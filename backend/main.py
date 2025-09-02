@@ -9,9 +9,9 @@ app = FastAPI(title="Hepatitis C Classification API")
 try:
     model = joblib.load("hepatitis_model.pkl")
     model_features = joblib.load("model_features.pkl")
-    print(f"✅ Model loaded successfully with {len(model_features)} features")
+    print(f"Model loaded successfully with {len(model_features)} features")
 except Exception as e:
-    print(f"❌ Error loading model: {e}")
+    print(f"Error loading model: {e}")
     model = None
     model_features = None
 
@@ -22,7 +22,7 @@ app.add_middleware(
         # Development
         "http://localhost:5173",  # Vite dev server
         "http://localhost:3000",  # React dev server
-        # "https://domain.com",  # Production domain
+        "https://hepatitis-c-classification-workshop.onrender.com"
     ],
     allow_credentials=False,
     allow_methods=["GET", "POST", "OPTIONS"],
